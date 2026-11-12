@@ -1,0 +1,24 @@
+{
+  "id": "redxkey.reaplugin",
+  "name": "RedxKey Bean Doser",
+  "author": "SongPaul",
+  "description": "Dispenses beans from RedxKey dosing modules over BLE. Each module is a sensor with a dispense command.",
+  "version": "0.1.0",
+  "apiVersion": 1,
+  "permissions": ["transport.ble"],
+  "drivers": [{
+    "id": "module",
+    "type": "sensor",
+    "ble": {"match": {"name": {"contains": "RedXKey"}}}
+  }],
+  "settings": {
+    "writeMode": {
+      "type": "enum",
+      "label": "Write mode",
+      "values": ["withResponse", "withoutResponse"],
+      "default": "withResponse",
+      "description": "How the weight and start bytes are written. Use withoutResponse only if the module rejects acknowledged writes."
+    }
+  },
+  "api": []
+}
